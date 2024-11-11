@@ -6,7 +6,7 @@ from app.depends import get_db_session, token_verifier
 from app.auth_user import UserUseCases
 from app.schemas import User, UserCreated
 
-user_router = APIRouter(prefix='/user')
+user_router = APIRouter()
 
 @user_router.post('/register', tags=["Usuários"])
 def user_register(
@@ -35,5 +35,14 @@ def user_register(
     auth_data = uc.user_login(user=user)
     return JSONResponse(
         content=auth_data,
+        status_code=status.HTTP_200_OK
+    )
+
+@user_router.get('/verify_token', tags=["Usuários"])
+def user_me(
+    access_token: str = Depends(token_verifier)
+):
+    return JSONResponse(
+        content={'detail': 'Success'},
         status_code=status.HTTP_200_OK
     )

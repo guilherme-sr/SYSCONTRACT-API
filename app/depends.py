@@ -5,7 +5,7 @@ from app.db.connection import Session
 from app.auth_user import UserUseCases
 
 
-oauth_scheme = OAuth2PasswordBearer(tokenUrl='/user/login')
+oauth_scheme = OAuth2PasswordBearer(tokenUrl='/login')
 
 
 def get_db_session():
