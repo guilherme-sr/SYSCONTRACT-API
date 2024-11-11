@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "API_Projeto_Syscontract"
+name = "Syscontract-API"
 version = "0.1.0"
 authors = ["Guilherme Ribeiro <guilhermesr.gr@protonmail.com>"]
 description = ""
