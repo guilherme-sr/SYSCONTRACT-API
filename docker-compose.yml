@@ -1,0 +1,31 @@
+services:
+  postgresql_syscontract:
+    image: postgres:latest
+    ports:
+      - "5432:5432"  # Expõe a porta 5432 do PostgreSQL
+    env_file:
+      - ./.env  # Usa um arquivo .env para configuração de ambiente (usuário, senha, database)
+    volumes:
+      - /var/cache/postgres_data_2:/var/lib/postgresql/data  # Volume para persistência de dados do PostgreSQL
+    networks:
+      - syscontract_network
+
+  api_syscontract:
+    build:
+      context: .  
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app 
+    environment:
+      POETRY_VIRTUALENVS_CREATE: "false" 
+      DB_URL: postgresql://postgresql_syscontract:5432/main?user=admin&password=db_pass_332211
+    depends_on:
+      - postgresql_syscontract 
+    command: /bin/sh -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+    networks:
+      - syscontract_network
+
+networks:
+  syscontract_network:
+    driver: bridge
