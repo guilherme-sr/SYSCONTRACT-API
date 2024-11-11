@@ -6,7 +6,7 @@ Essa é a API que tem como objetivo gerenciar os contratos e os clientes que est
 
 #### Utilizando a API
 
-Para utilizar a API é necessário ter o (Docker)[https://www.docker.com/] e o (Docker Compose)[https://docs.docker.com/compose/] instalados.
+Para utilizar a API é necessário ter o [Docker](https://www.docker.com/) e o [Docker Compose](https://docs.docker.com/compose/) instalados.
 
 - Faça o clone do projeto
 - Acesse a pasta do projeto
